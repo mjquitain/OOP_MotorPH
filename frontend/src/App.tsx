@@ -15,8 +15,8 @@ function App() {
 function AppRoutes() {
   return (
     <Routes>
-      <Route path="login" element={<Login />} />
-      <Route path="employeedashboard" element={<EmployeeDashboard />} />
+      <Route path="/" element={<Login />} />
+      <Route path="/dashboard/employee" element={<EmployeeDashboard />} />
     </Routes>
   );
 }

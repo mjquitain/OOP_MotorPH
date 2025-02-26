@@ -7,10 +7,11 @@ function Login() {
   const [password, setPassword] = useState("");
   //const navigate = useNavigate;
 
-  const handleSubmit = (e: { preventDefault: () => void; }) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    
     console.log("Logging in with:", { email, password });
-    //navigate("/dashboard");
+    //("/dashboard");
   };
 
   return (
@@ -35,7 +36,7 @@ function Login() {
               onChange={(e) => setPassword(e.target.value)}
               required
             />
-            <Button fullWidth>
+            <Button type="submit" fullWidth>
               Sign In
             </Button>
           </form>
