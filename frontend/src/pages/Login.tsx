@@ -1,5 +1,13 @@
-import {Button, Card, Container, PasswordInput, TextInput, Title} from "@mantine/core";
+import {
+  Button,
+  Card,
+  Container,
+  PasswordInput,
+  TextInput,
+  Title,
+} from "@mantine/core";
 import { useState } from "react";
+import { Link } from "react-router";
 //import { useNavigate } from "react-router";
 
 function Login() {
@@ -9,9 +17,9 @@ function Login() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     console.log("Logging in with:", { email, password });
-    //("/dashboard");
+    //("/employee");
   };
 
   return (
@@ -36,9 +44,13 @@ function Login() {
               onChange={(e) => setPassword(e.target.value)}
               required
             />
+            <nav>
+              <ul>
             <Button type="submit" fullWidth>
-              Sign In
+              <li><Link to={"/employee/dashboard"}>Sign In</Link></li>
             </Button>
+            </ul>
+            </nav>
           </form>
         </Card>
       </div>
