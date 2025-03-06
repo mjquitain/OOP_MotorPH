@@ -1,49 +1,76 @@
 import { Container } from "@mantine/core";
 import { Link } from "react-router";
+import {IconClockHour2, IconHome, IconLogout, IconReceipt, IconUser} from "@tabler/icons-react";
+import { useState } from "react";
 
-function EmployeeAccount(){
+function EmployeeAccount() {
+const [isExpanded, setIsExpanded] = useState(false);
 
-    return(
-        <Container fluid className="h-screen flex bg-gray-50">
-      <nav className="fixed left-0 top-0 h-full w-60 bg-black text-white p-3">
-        <div>
+  return (
+    <Container fluid className="flex h-screen w-screen overflow-hidden bg-gray-50">
+      <nav className={`fixed left-0 top-0 h-full bg-black text-white p-3 transition-all duration-300 ${
+          isExpanded ? "w-60" : "w-20"
+        }`}
+        onMouseEnter={() => setIsExpanded(true)}
+        onMouseLeave={() => setIsExpanded(false)}
+        >
+        <div className={`transition-opacity duration-300 ${isExpanded ? "opacity-100" : "opacity-0"}`}>
           <h2 className="text-xl font-bold">MOTORPH</h2>
           <p className="text-sm">THE FILIPINO'S CHOICE</p>
-          <ul className="mt-4">
-            <li className="flex items-center space-x-3 p-3 hover:bg-gray-700 rounded">
-              <Link to="/employee/dashboard" className="hover:text-gray-300">
+          <ul className="mt-4 list-none">
+            <li className="p-3 hover:bg-gray-700 rounded flex items-center gap-3">
+              <Link
+                to="/employee/dashboard"
+                className="hover:text-gray-300 flex items-center w-full h-full justify-start gap-3"
+              >
+                <IconHome size={20} />
                 Dashboard
               </Link>
             </li>
-            <li className="flex items-center space-x-3 p-3 hover:bg-gray-700 rounded">
-              <Link to="/employee/attendance" className="hover:text-gray-300">
+            <li className="p-3 hover:bg-gray-700 rounded flex items-center gap-3">
+              <Link
+                to="/employee/attendance"
+                className="hover:text-gray-300 flex items-center w-full h-full justify-start gap-3"
+              >
+                <IconClockHour2 size={20} />
                 Attendance
               </Link>
             </li>
-            <li className="flex items-center space-x-3 p-3 hover:bg-gray-700 rounded">
-              <Link to="/employee/payroll" className="hover:text-gray-300">
+            <li className="p-3 hover:bg-gray-700 rounded flex items-center gap-3">
+              <Link
+                to="/employee/payroll"
+                className="hover:text-gray-300 flex items-center w-full h-full justify-start gap-3"
+              >
+                <IconReceipt size={20} />
                 Payroll
               </Link>
             </li>
-            <li className="flex items-center space-x-3 p-3 hover:bg-gray-700 rounded">
-              <Link to={"/employee/account"} className="hover:text-gray-300">
+            <li className="p-3 hover:bg-gray-700 rounded flex items-center gap-3">
+              <Link
+                to={"/employee/account"}
+                className="hover:text-gray-300 flex items-center w-full h-full justify-start gap-3"
+              >
+                <IconUser size={20} />
                 Account
               </Link>
             </li>
           </ul>
 
-          <div className="absolute inset-x-0 bottom-0 p-3">
-            <li className="flex items-center space-x-3 p-3 hover:bg-gray-700 rounded">
-              <Link to={"/"} className="hover:text-gray-300">
+          <ul className="absolute inset-x-0 bottom-3 p-3 list-none">
+            <li className="p-3 hover:bg-gray-700 rounded flex items-center gap-3">
+              <Link
+                to={"/"}
+                className="hover:text-gray-300 flex items-center w-full h-full justify-start gap-3"
+              >
+                <IconLogout size={20} />
                 Logout
               </Link>
             </li>
-          </div>
+          </ul>
         </div>
       </nav>
     </Container>
-    );
-
+  );
 }
 
 export default EmployeeAccount;
