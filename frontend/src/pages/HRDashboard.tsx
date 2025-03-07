@@ -11,7 +11,6 @@ import {
 
 function HRDashboard() {
   const [currentTime, setCurrentTime] = useState(new Date());
-  const [isExpanded, setIsExpanded] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -26,13 +25,9 @@ function HRDashboard() {
       fluid
       className="flex h-screen w-screen overflow-hidden bg-gray-50"
     >
-      <nav className={`fixed left-0 top-0 h-full bg-black text-white p-3 transition-all duration-300 ${
-          isExpanded ? "w-60" : "w-20"
-        }`}
-        onMouseEnter={() => setIsExpanded(true)}
-        onMouseLeave={() => setIsExpanded(false)}
-        >
-        <div className={`transition-opacity duration-300 ${isExpanded ? "opacity-100" : "opacity-0"}`}>
+      <nav
+        className="fixed left-0 top-0 h-full w-60 bg-black text-white p-3">
+        <div>
           <h2 className="text-xl font-bold">MOTORPH</h2>
           <p className="text-sm">THE FILIPINO'S CHOICE</p>
           <ul className="mt-4 list-none">
@@ -88,10 +83,7 @@ function HRDashboard() {
         </div>
       </nav>
 
-      <main className={`transition-all duration-300 flex-1 p-6 bg-gray-50 h-screen overflow-auto ${
-          isExpanded ? "ml-60" : "ml-20"
-        }`}
-      >
+      <main className="ml-60 mr-0 items-center justify-center h-screen w-screen p-6 bg-gray-50 overflow-auto">
         <div className="flex flex-wrap justify-between items-center w-full p-4">
           <h1 className="text-xl font-bold text-left">Welcome, </h1>
           <Avatar variant="transparent" radius="xs" size="md" src="" />

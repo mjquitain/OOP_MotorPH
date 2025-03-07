@@ -1,20 +1,14 @@
 import { Container } from "@mantine/core";
 import { Link } from "react-router";
 import {IconClockHour2, IconHome, IconLogout, IconReceipt, IconUser} from "@tabler/icons-react";
-import { useState } from "react";
 
 function EmployeePayroll() {
-const [isExpanded, setIsExpanded] = useState(false);
 
   return (
     <Container fluid className="flex h-screen w-screen overflow-hidden bg-gray-50">
-      <nav className={`fixed left-0 top-0 h-full bg-black text-white p-3 transition-all duration-300 ${
-          isExpanded ? "w-60" : "w-20"
-        }`}
-        onMouseEnter={() => setIsExpanded(true)}
-        onMouseLeave={() => setIsExpanded(false)}
-        >
-        <div className={`transition-opacity duration-300 ${isExpanded ? "opacity-100" : "opacity-0"}`}>
+      <nav
+        className="fixed left-0 top-0 h-full w-60 bg-black text-white p-3">
+        <div>
           <h2 className="text-xl font-bold">MOTORPH</h2>
           <p className="text-sm">THE FILIPINO'S CHOICE</p>
           <ul className="mt-4 list-none">
