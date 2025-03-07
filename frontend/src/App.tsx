@@ -5,6 +5,7 @@ import EmployeeDashboard from "./pages/EmployeeDashboard";
 import EmployeeAttendance from "./pages/EmployeeAttendance";
 import EmployeePayroll from "./pages/EmployeePayroll";
 import EmployeeAccount from "./pages/EmployeeAccount";
+import HRDashboard from "./pages/HRDashboard";
 
 function App() {
 
@@ -23,6 +24,7 @@ function AppRoutes() {
       <Route path="/employee/attendance" element={<EmployeeAttendance />} />
       <Route path="/employee/payroll" element={<EmployeePayroll />} />
       <Route path="/employee/account" element={<EmployeeAccount />} />
+      <Route path="/hr/dashboard" element={<HRDashboard />} />
     </Routes>
   );
 }

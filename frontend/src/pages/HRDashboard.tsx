@@ -1,13 +1,31 @@
-import { Container } from "@mantine/core";
+import { Avatar, Button, Card, Container } from "@mantine/core";
+import { useState, useEffect } from "react";
 import { Link } from "react-router";
-import {IconClockHour2, IconHome, IconLogout, IconReceipt, IconUser} from "@tabler/icons-react";
-import { useState } from "react";
+import {
+  IconClockHour2,
+  IconHome,
+  IconLogout,
+  IconReceipt,
+  IconUser,
+} from "@tabler/icons-react";
 
-function EmployeeAttendance() {
-const [isExpanded, setIsExpanded] = useState(false);
+function HRDashboard() {
+  const [currentTime, setCurrentTime] = useState(new Date());
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentTime(new Date());
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
-    <Container fluid className="flex h-screen w-screen overflow-hidden bg-gray-50">
+    <Container
+      fluid
+      className="flex h-screen w-screen overflow-hidden bg-gray-50"
+    >
       <nav className={`fixed left-0 top-0 h-full bg-black text-white p-3 transition-all duration-300 ${
           isExpanded ? "w-60" : "w-20"
         }`}
@@ -70,9 +88,54 @@ const [isExpanded, setIsExpanded] = useState(false);
         </div>
       </nav>
 
-      
+      <main className={`transition-all duration-300 flex-1 p-6 bg-gray-50 h-screen overflow-auto ${
+          isExpanded ? "ml-60" : "ml-20"
+        }`}
+      >
+        <div className="flex flex-wrap justify-between items-center w-full p-4">
+          <h1 className="text-xl font-bold text-left">Welcome, </h1>
+          <Avatar variant="transparent" radius="xs" size="md" src="" />
+        </div>
+
+        <div className="flex justify-center p-4 gap-5">
+          <Card
+            padding="lg"
+            radius="md"
+            className="text-center w-full max-w-md"
+            bg={"var(--mantine-color-black)"}
+          >
+            <div className="mt-0">
+              <div className="text-xl text-white">
+                {currentTime.toLocaleDateString("en-US", {
+                  weekday: "long",
+                  day: "2-digit",
+                  month: "long",
+                  year: "numeric",
+                })}
+              </div>
+              <div className="text-2xl text-white font-bold mt-0">
+                {currentTime.toLocaleTimeString("en-US", {
+                  hour: "2-digit",
+                  minute: "2-digit",
+                  second: "2-digit",
+                  hour12: true,
+                })}
+              </div>
+            </div>
+
+            <div className="flex justify-center gap-3 mt-4">
+              <Button color="green" radius="md" w={200}>
+                Clock In
+              </Button>
+              <Button color="red" radius="md" w={200}>
+                Clock Out
+              </Button>
+            </div>
+          </Card>
+        </div>
+      </main>
     </Container>
   );
 }
 
-export default EmployeeAttendance;
+export default HRDashboard;

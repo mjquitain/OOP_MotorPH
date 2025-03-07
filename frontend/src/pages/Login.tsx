@@ -7,19 +7,49 @@ import {
   Title,
 } from "@mantine/core";
 import { useState } from "react";
-import { Link } from "react-router";
-//import { useNavigate } from "react-router";
+import { useNavigate } from "react-router";
+
+const mockUsers = [
+  {
+    id: 1,
+    name: "Manuel III Garcia",
+    email: "employee@motorph.com",
+    password: "password123",
+    role: "employee",
+  },
+  {
+    id: 2,
+    name: "Andrea Mae Villanueva",
+    email: "hr@motorph.com",
+    password: "password123",
+    role: "hr",
+  },
+];
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  //const navigate = useNavigate;
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    console.log("Logging in with:", { email, password });
-    //("/employee");
+    const user = mockUsers.find(
+      (u) => u.email === email && u.password === password
+    );
+
+    if (user) {
+      localStorage.setItem("user", JSON.stringify(user));
+
+      if (user.role === "hr") {
+        navigate("/hr/dashboard");
+      } else {
+        navigate("/employee/dashboard");
+      }
+    } else {
+      setError("Invalid email or password");
+    }
   };
 
   return (
@@ -44,13 +74,10 @@ function Login() {
               onChange={(e) => setPassword(e.target.value)}
               required
             />
-            <nav>
-              <ul>
+            {error && <p className="text-red-500 text-sm">{error}</p>}
             <Button type="submit" fullWidth>
-              <li><Link to={"/employee/dashboard"}>Sign In</Link></li>
+              Sign In
             </Button>
-            </ul>
-            </nav>
           </form>
         </Card>
       </div>
