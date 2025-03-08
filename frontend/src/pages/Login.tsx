@@ -9,7 +9,7 @@ import {
 import { useState } from "react";
 import { useNavigate } from "react-router";
 
-const mockUsers = [
+export const mockUsers = [
   {
     id: 1,
     name: "Manuel III Garcia",
