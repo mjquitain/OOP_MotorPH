@@ -37,10 +37,13 @@ import {
   IconClockHour2,
   IconHome,
   IconMotorbike,
+  IconFileInvoice,
+  IconCopyCheck,
+  IconBrandPaypal,
 } from "@tabler/icons-react";
 import { useState } from "react";
 
-function EmployeeAccount() {
+function HRAccount() {
   const [isExpanded, setIsExpanded] = useState(false);
   const [activeTab, setActiveTab] = useState<string | null>("profile");
   const [showDeleteModal, setShowDeleteModal] = useState(false);
@@ -75,25 +78,40 @@ function EmployeeAccount() {
         <ul className="mt-4 space-y-2">
           {[
             {
-              to: "/employee/dashboard",
+              to: "/hr/dashboard",
               icon: <IconHome size={20} />,
               label: "Dashboard",
             },
             {
-              to: "/employee/attendance",
+              to: "/hr/attendance",
               icon: <IconClockHour2 size={20} />,
               label: "Attendance",
             },
             {
-              to: "/employee/payroll",
+              to: "/hr/payroll",
               icon: <IconReceipt size={20} />,
               label: "Payroll",
             },
             {
-              to: "/employee/account",
+              to: "/hr/account",
               icon: <IconUser size={20} />,
               label: "Account",
             },
+            {
+                to: "/hr/employeemanagement",
+                icon: <IconFileInvoice size={20} />,
+                label: "Employee Management",
+              },
+              {
+                to: "/hr/requests",
+                icon: <IconCopyCheck size={20} />,
+                label: "Requests",
+              },
+              {
+                to: "/hr/payrollhub",
+                icon: <IconBrandPaypal size={20} />,
+                label: "Payroll Hub",
+              },
           ].map(({ to, icon, label }) => (
             <li
               key={to}
@@ -149,15 +167,15 @@ function EmployeeAccount() {
           <Tabs value={activeTab} onChange={setActiveTab}>
             <Tabs.List>
               <Tabs.Tab value="profile">
-                <IconUser size={14} />
+                <IconUser size={20} />
                 Profile
               </Tabs.Tab>
               <Tabs.Tab value="security">
-                <IconShieldLock size={14} />
+                <IconShieldLock size={20} />
                 Security
               </Tabs.Tab>
               <Tabs.Tab value="emergency">
-                <IconEmergencyBed size={14} />
+                <IconEmergencyBed size={20} />
                 Emergency Contacts
               </Tabs.Tab>
             </Tabs.List>
@@ -368,4 +386,4 @@ function EmployeeAccount() {
   );
 }
 
-export default EmployeeAccount;
+export default HRAccount;

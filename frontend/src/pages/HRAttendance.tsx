@@ -1,34 +1,37 @@
 import {
+  Badge,
+  Button,
   Container,
+  Grid,
+  Group,
+  Paper,
+  Progress,
+  Table,
   Title,
   Text,
-  Group,
-  Badge,
-  Grid,
-  Paper,
   Tabs,
-  Progress,
-  Button,
-  Table,
 } from "@mantine/core";
-import { Link } from "react-router";
 import {
+    IconBrandPaypal,
   IconCalendarEvent,
   IconCalendarPlus,
   IconChartBar,
   IconCheck,
   IconClockHour2,
+  IconCopyCheck,
   IconDownload,
   IconFileAlert,
+  IconFileInvoice,
   IconHome,
   IconLogout,
   IconMotorbike,
   IconReceipt,
   IconUser,
 } from "@tabler/icons-react";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
+import { Link } from "react-router";
 
-function EmployeeAttendance() {
+function HRAttendance() {
   const [currentTime, setCurrentTime] = useState(new Date());
   const [activeTab, setActiveTab] = useState<string | null>("week");
   const [isExpanded, setIsExpanded] = useState(false);
@@ -54,7 +57,10 @@ function EmployeeAttendance() {
   ];
 
   return (
-    <Container fluid className="flex h-screen bg-gray-50">
+    <Container
+      fluid
+      className="flex h-screen bg-gray-50"
+    >
       <nav
         className={`fixed left-0 top-0 h-full bg-black text-white p-3 transition-all duration-300 ${
           isExpanded ? "w-60" : "w-20"
@@ -75,25 +81,40 @@ function EmployeeAttendance() {
         <ul className="mt-4 space-y-2">
           {[
             {
-              to: "/employee/dashboard",
+              to: "/hr/dashboard",
               icon: <IconHome size={20} />,
               label: "Dashboard",
             },
             {
-              to: "/employee/attendance",
+              to: "/hr/attendance",
               icon: <IconClockHour2 size={20} />,
               label: "Attendance",
             },
             {
-              to: "/employee/payroll",
+              to: "/hr/payroll",
               icon: <IconReceipt size={20} />,
               label: "Payroll",
             },
             {
-              to: "/employee/account",
+              to: "/hr/account",
               icon: <IconUser size={20} />,
               label: "Account",
             },
+            {
+                to: "/hr/employeemanagement",
+                icon: <IconFileInvoice size={20} />,
+                label: "Employee Management",
+              },
+              {
+                to: "/hr/requests",
+                icon: <IconCopyCheck size={20} />,
+                label: "Requests",
+              },
+              {
+                to: "/hr/payrollhub",
+                icon: <IconBrandPaypal size={20} />,
+                label: "Payroll Hub",
+              },
           ].map(({ to, icon, label }) => (
             <li
               key={to}
@@ -112,14 +133,53 @@ function EmployeeAttendance() {
               <IconLogout size={20} /> {isExpanded && <span>Logout</span>}
             </Link>
           </li>
-        </ul>
+        </ul><div className={`transition-opacity duration-300 ${isExpanded ? "opacity-100" : "opacity-0"}`}>
+          <h2 className="text-xl font-bold">MOTORPH</h2>
+          <p className="text-sm">THE FILIPINO'S CHOICE</p>
+          <ul className="mt-4">
+              <li className="p-3 hover:bg-gray-700 rounded flex items-center">
+                <Link to="/hr/dashboard" className="w-full h-full flex items-center gap-3">
+                  <IconHome size={20} />
+                  Dashboard
+                </Link>
+              </li>
+
+              <li className="p-3 hover:bg-gray-700 rounded flex items-center">
+                <Link to="/hr/attendance" className="w-full h-full flex items-center gap-3">
+                  <IconClockHour2 size={20} />
+                  Attendance
+                </Link>
+              </li>
+
+              <li className="p-3 hover:bg-gray-700 rounded flex items-center">
+                <Link to="/hr/payroll" className="w-full h-full flex items-center gap-3">
+                  <IconReceipt size={20} />
+                  Payroll
+                </Link>
+              </li>
+
+              <li className="p-3 hover:bg-gray-700 rounded flex items-center">
+                <Link to={"/hr/account"} className="w-full h-full flex items-center gap-3">
+                  <IconUser size={20} />
+                  Account
+                </Link>
+              </li>
+          </ul>
+
+          <ul className="absolute inset-x-0 bottom-3 p-3">
+            <li className="p-3 hover:bg-gray-700 rounded flex items-center">
+              <Link to={"/"} className="w-full h-full flex items-centergap-3">
+                <IconLogout size={20} />
+                Logout
+              </Link>
+            </li>
+          </ul>
+        </div>
       </nav>
 
-      <main
-        className={`transition-all duration-300 flex-1 p-6 bg-gray-50 h-screen overflow-auto ${
+      <main className={`transition-all duration-300 flex-1 p-6 bg-gray-50 h-screen overflow-auto ${
           isExpanded ? "ml-60" : "ml-20"
-        }`}
-      >
+        }`}>
         <div className="p-3 space-y-6 mb-3">
           <Group>
             <div className="flex flex-wrap justify-between items-center w-full">
@@ -275,4 +335,4 @@ function EmployeeAttendance() {
   );
 }
 
-export default EmployeeAttendance;
+export default HRAttendance;

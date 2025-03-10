@@ -6,6 +6,12 @@ import EmployeeAttendance from "./pages/EmployeeAttendance";
 import EmployeePayroll from "./pages/EmployeePayroll";
 import EmployeeAccount from "./pages/EmployeeAccount";
 import HRDashboard from "./pages/HRDashboard";
+import HRAttendance from "./pages/HRAttendance"
+import HRPayroll from "./pages/HRPayroll";
+import HRAccount from "./pages/HRAccount";
+import HREmployeeManagement from "./pages/HREmployeeManagement";
+import HRPayrollHub from "./pages/HRPayrollHub";
+import HRRequests from "./pages/HRRequests";
 
 function App() {
 
@@ -25,6 +31,12 @@ function AppRoutes() {
       <Route path="/employee/payroll" element={<EmployeePayroll />} />
       <Route path="/employee/account" element={<EmployeeAccount />} />
       <Route path="/hr/dashboard" element={<HRDashboard />} />
+      <Route path="/hr/attendance" element={<HRAttendance />} />
+      <Route path="/hr/payroll" element={<HRPayroll />} />
+      <Route path="/hr/account" element={<HRAccount />} />
+      <Route path="/hr/employeemanagement" element={<HREmployeeManagement />} />
+      <Route path="/hr/payrollhub" element={<HRPayrollHub />} />
+      <Route path="/hr/requests" element={<HRRequests />} />
     </Routes>
   );
 }

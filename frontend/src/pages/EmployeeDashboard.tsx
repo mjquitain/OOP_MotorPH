@@ -21,12 +21,14 @@ import {
   IconCoin,
   IconHome,
   IconLogout,
+  IconMotorbike,
   IconReceipt,
   IconUser,
 } from "@tabler/icons-react";
 
 function EmployeeDashboard() {
   const [currentTime, setCurrentTime] = useState(new Date());
+  const [isExpanded, setIsExpanded] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -35,76 +37,76 @@ function EmployeeDashboard() {
 
     return () => clearInterval(interval);
   }, []);
-  
+
   const theme = useMantineTheme();
 
   return (
-    <Container
-      fluid
-      className="flex h-screen w-screen overflow-hidden bg-gray-50"
-    >
-      <nav className="fixed left-0 top-0 h-full w-60 bg-black text-white p-3">
-        <div>
-          <Title order={1} size="h2" className="text-xl font-bold">
-            MOTORPH
-          </Title>
-          <Title order={2} size="h6" className="text-sm">
-            THE FILIPINO'S CHOICE
-          </Title>
-          <ul className="mt-4 list-none">
-            <li className="p-3 hover:bg-gray-700 rounded flex items-center gap-3">
-              <Link
-                to="/employee/dashboard"
-                className="hover:text-gray-300 flex items-center w-full h-full justify-start gap-3"
-              >
-                <IconHome size={20} />
-                Dashboard
-              </Link>
-            </li>
-            <li className="p-3 hover:bg-gray-700 rounded flex items-center gap-3">
-              <Link
-                to="/employee/attendance"
-                className="hover:text-gray-300 flex items-center w-full h-full justify-start gap-3"
-              >
-                <IconClockHour2 size={20} />
-                Attendance
-              </Link>
-            </li>
-            <li className="p-3 hover:bg-gray-700 rounded flex items-center gap-3">
-              <Link
-                to="/employee/payroll"
-                className="hover:text-gray-300 flex items-center w-full h-full justify-start gap-3"
-              >
-                <IconReceipt size={20} />
-                Payroll
-              </Link>
-            </li>
-            <li className="p-3 hover:bg-gray-700 rounded flex items-center gap-3">
-              <Link
-                to={"/employee/account"}
-                className="hover:text-gray-300 flex items-center w-full h-full justify-start gap-3"
-              >
-                <IconUser size={20} />
-                Account
-              </Link>
-            </li>
-          </ul>
-
-          <ul className="absolute inset-x-0 bottom-3 p-3 list-none">
-            <li className="p-3 hover:bg-gray-700 rounded flex items-center gap-3">
-              <Link
-                to={"/"}
-                className="hover:text-gray-300 flex items-center w-full h-full justify-start gap-3"
-              >
-                <IconLogout size={20} />
-                Logout
-              </Link>
-            </li>
-          </ul>
+    <Container fluid className="flex h-screen bg-gray-50">
+      <nav
+        className={`fixed left-0 top-0 h-full bg-black text-white p-3 transition-all duration-300 ${
+          isExpanded ? "w-60" : "w-20"
+        }`}
+        onMouseEnter={() => setIsExpanded(true)}
+        onMouseLeave={() => setIsExpanded(false)}
+      >
+        <div className="flex items-center gap-3">
+          <IconMotorbike size={50} />
+          {isExpanded && (
+            <h2 className="text-xl font-bold">
+              MOTORPH
+              <p className="text-sm font-light">THE FILIPINO'S CHOICE</p>
+            </h2>
+          )}
         </div>
+
+        <ul className="mt-4 space-y-2">
+          {[
+            {
+              to: "/employee/dashboard",
+              icon: <IconHome size={20} />,
+              label: "Dashboard",
+            },
+            {
+              to: "/employee/attendance",
+              icon: <IconClockHour2 size={20} />,
+              label: "Attendance",
+            },
+            {
+              to: "/employee/payroll",
+              icon: <IconReceipt size={20} />,
+              label: "Payroll",
+            },
+            {
+              to: "/employee/account",
+              icon: <IconUser size={20} />,
+              label: "Account",
+            },
+          ].map(({ to, icon, label }) => (
+            <li
+              key={to}
+              className="p-3 hover:bg-gray-700 rounded flex items-center"
+            >
+              <Link to={to} className="w-full flex items-center gap-3">
+                {icon} {isExpanded && <span>{label}</span>}
+              </Link>
+            </li>
+          ))}
+        </ul>
+
+        <ul className="absolute inset-x-0 bottom-3 p-3">
+          <li className="p-3 hover:bg-gray-700 rounded flex items-center">
+            <Link to={"/"} className="w-full flex items-center gap-3">
+              <IconLogout size={20} /> {isExpanded && <span>Logout</span>}
+            </Link>
+          </li>
+        </ul>
       </nav>
 
-      <main className="ml-60 mr-0 items-center justify-center h-screen w-screen p-6 bg-gray-50 overflow-auto">
+      <main
+        className={`transition-all duration-300 flex-1 p-6 bg-gray-50 h-screen overflow-auto ${
+          isExpanded ? "ml-60" : "ml-20"
+        }`}
+      >
         <div className="p-3 space-y-6 mb-3">
           <Group>
             <div className="flex flex-wrap justify-between items-center w-full">

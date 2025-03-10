@@ -17,13 +17,15 @@ import {
   ThemeIcon,
   TextInput,
 } from "@mantine/core";
-import { Link } from "react-router";
 import {
+    IconBrandPaypal,
   IconCalculator,
   IconClockHour2,
   IconCoin,
+  IconCopyCheck,
   IconDownload,
   IconFileDownload,
+  IconFileInvoice,
   IconHome,
   IconLogout,
   IconMotorbike,
@@ -34,8 +36,9 @@ import {
   IconWallet,
 } from "@tabler/icons-react";
 import { useState } from "react";
+import { Link } from "react-router";
 
-function EmployeePayroll() {
+function HRPayroll() {
   const theme = useMantineTheme();
   const [activeTab, setActiveTab] = useState<string | null>("payslips");
   const [selectedYear, setSelectedYear] = useState<string | null>("2025");
@@ -89,25 +92,40 @@ function EmployeePayroll() {
         <ul className="mt-4 space-y-2">
           {[
             {
-              to: "/employee/dashboard",
+              to: "/hr/dashboard",
               icon: <IconHome size={20} />,
               label: "Dashboard",
             },
             {
-              to: "/employee/attendance",
+              to: "/hr/attendance",
               icon: <IconClockHour2 size={20} />,
               label: "Attendance",
             },
             {
-              to: "/employee/payroll",
+              to: "/hr/payroll",
               icon: <IconReceipt size={20} />,
               label: "Payroll",
             },
             {
-              to: "/employee/account",
+              to: "/hr/account",
               icon: <IconUser size={20} />,
               label: "Account",
             },
+            {
+                to: "/hr/employeemanagement",
+                icon: <IconFileInvoice size={20} />,
+                label: "Employee Management",
+              },
+              {
+                to: "/hr/requests",
+                icon: <IconCopyCheck size={20} />,
+                label: "Requests",
+              },
+              {
+                to: "/hr/payrollhub",
+                icon: <IconBrandPaypal size={20} />,
+                label: "Payroll Hub",
+              },
           ].map(({ to, icon, label }) => (
             <li
               key={to}
@@ -383,4 +401,4 @@ function EmployeePayroll() {
   );
 }
 
-export default EmployeePayroll;
+export default HRPayroll;
