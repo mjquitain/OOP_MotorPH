@@ -129,10 +129,8 @@ function HRDashboard() {
         <div className="p-3 space-y-3">
           <Group>
             <div className="flex flex-wrap justify-between items-center w-full">
-              <Title order={1} className="text-2xl font-bold p-3">
-                Welcome,
-              </Title>
-              <div className="p-3 items-center">
+              <h1 className="text-2xl font-bold p-3">Welcome,</h1>
+              <div className="p-3 flex flex-col items-center space-y-2">
                 <div className="mb-1">
                   <Text>
                     {currentTime.toLocaleDateString("en-US", {
@@ -146,24 +144,27 @@ function HRDashboard() {
                     </span>
                   </Text>
                 </div>
-                <Group>
-                  <Button color="teal" size="md" w={123} h={36}>
+                <div className="flex space-x-2">
+                  <Button color="teal" size="md" w={130} h={36}>
                     Check In
                   </Button>
                   <Button
                     variant="outline"
                     color="red"
                     size="md"
-                    w={123}
+                    w={130}
                     h={36}
+                    className="left-1"
                   >
                     Check Out
                   </Button>
-                </Group>
+                </div>
               </div>
             </div>
           </Group>
+        </div>
 
+        <div className="p-3 space-y-6">
           <Grid gutter="xl">
             <Grid.Col span={3}>
               <Paper p="lg" shadow="sm" className="h-full">
@@ -244,59 +245,57 @@ function HRDashboard() {
               </Paper>
             </Grid.Col>
           </Grid>
+        </div>
 
-          <div className="p-3 mt-3">
-            <Paper p="lg" shadow="sm" radius="md">
-              <Group className="mb-4">
-                <Title order={3}>Company Updates</Title>
-                <Badge variant="filled" color="blue">
-                  3 New
-                </Badge>
-              </Group>
+        <div className="p-3 mt-3">
+          <Paper p="lg" shadow="sm" radius="md">
+            <Group className="mb-4">
+              <Title order={3}>Company Updates</Title>
+              <Badge variant="filled" color="blue">
+                3 New
+              </Badge>
+            </Group>
 
-              <Tabs defaultValue="announcements">
-                <Tabs.List>
-                  <Tabs.Tab value="announcements">Announcements</Tabs.Tab>
-                  <Tabs.Tab value="policies">Policies</Tabs.Tab>
-                </Tabs.List>
+            <Tabs defaultValue="announcements">
+              <Tabs.List>
+                <Tabs.Tab value="announcements">Announcements</Tabs.Tab>
+                <Tabs.Tab value="policies">Policies</Tabs.Tab>
+              </Tabs.List>
 
-                <Tabs.Panel value="announcements" pt="sm">
-                  <Timeline bulletSize={24} lineWidth={2}>
-                    <Timeline.Item title="Payroll Processing">
-                      <Text size="sm">
-                        March 15th - Payroll will be processed
-                      </Text>
-                      <Text size="xs" color="dimmed">
-                        Posted 2 days ago
-                      </Text>
-                    </Timeline.Item>
+              <Tabs.Panel value="announcements" pt="sm">
+                <Timeline bulletSize={24} lineWidth={2}>
+                  <Timeline.Item title="Payroll Processing">
+                    <Text size="sm">
+                      March 15th - Payroll will be processed
+                    </Text>
+                    <Text size="xs" color="dimmed">
+                      Posted 2 days ago
+                    </Text>
+                  </Timeline.Item>
 
-                    <Timeline.Item
-                      bullet={<IconCalendar size={12} />}
-                      title="Holiday Notice"
-                    >
-                      <Text size="sm">Office closed April 13 - April 20</Text>
-                      <Text size="xs" color="dimmed">
-                        Posted 1 week ago
-                      </Text>
-                    </Timeline.Item>
+                  <Timeline.Item
+                    bullet={<IconCalendar size={12} />}
+                    title="Holiday Notice"
+                  >
+                    <Text size="sm">Office closed April 13 - April 20</Text>
+                    <Text size="xs" color="dimmed">
+                      Posted 1 week ago
+                    </Text>
+                  </Timeline.Item>
 
-                    <Timeline.Item
-                      bullet={<IconCoin size={12} />}
-                      title="Training Opportunities"
-                    >
-                      <Text size="sm">
-                        New Marketing Basics course available
-                      </Text>
-                      <Text size="xs" color="dimmed">
-                        Posted 3 days ago
-                      </Text>
-                    </Timeline.Item>
-                  </Timeline>
-                </Tabs.Panel>
-              </Tabs>
-            </Paper>
-          </div>
+                  <Timeline.Item
+                    bullet={<IconCoin size={12} />}
+                    title="Training Opportunities"
+                  >
+                    <Text size="sm">New Marketing Basics course available</Text>
+                    <Text size="xs" color="dimmed">
+                      Posted 3 days ago
+                    </Text>
+                  </Timeline.Item>
+                </Timeline>
+              </Tabs.Panel>
+            </Tabs>
+          </Paper>
         </div>
       </main>
     </Container>

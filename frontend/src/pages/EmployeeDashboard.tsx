@@ -103,17 +103,15 @@ function EmployeeDashboard() {
       </nav>
 
       <main
-        className={`transition-all duration-300 flex-1 p-6 bg-gray-50 h-screen overflow-auto ${
+        className={`transition-all duration-300 flex-1 p-4 bg-gray-50 h-screen overflow-auto ${
           isExpanded ? "ml-60" : "ml-20"
         }`}
       >
         <div className="p-3 space-y-6 mb-3">
           <Group>
             <div className="flex flex-wrap justify-between items-center w-full">
-              <Title order={1} className="text-2xl font-bold p-3">
-                Welcome,
-              </Title>
-              <div className="p-3 items-center">
+              <h1 className="text-2xl font-bold p-3">Welcome,</h1>
+              <div className="p-3 flex flex-col items-center space-y-2">
                 <div className="mb-1">
                   <Text>
                     {currentTime.toLocaleDateString("en-US", {
@@ -127,20 +125,21 @@ function EmployeeDashboard() {
                     </span>
                   </Text>
                 </div>
-                <Group>
-                  <Button color="teal" size="md" w={123} h={36}>
+                <div className="flex space-x-2">
+                  <Button color="teal" size="md" w={130} h={36}>
                     Check In
                   </Button>
                   <Button
                     variant="outline"
                     color="red"
                     size="md"
-                    w={123}
+                    w={130}
                     h={36}
+                    className="left-1"
                   >
                     Check Out
                   </Button>
-                </Group>
+                </div>
               </div>
             </div>
           </Group>

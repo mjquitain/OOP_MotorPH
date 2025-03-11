@@ -149,15 +149,15 @@ function EmployeeAccount() {
           <Tabs value={activeTab} onChange={setActiveTab}>
             <Tabs.List>
               <Tabs.Tab value="profile">
-                <IconUser size={14} />
+                <IconUser size={20} />
                 Profile
               </Tabs.Tab>
               <Tabs.Tab value="security">
-                <IconShieldLock size={14} />
+                <IconShieldLock size={20} />
                 Security
               </Tabs.Tab>
               <Tabs.Tab value="emergency">
-                <IconEmergencyBed size={14} />
+                <IconEmergencyBed size={20} />
                 Emergency Contacts
               </Tabs.Tab>
             </Tabs.List>

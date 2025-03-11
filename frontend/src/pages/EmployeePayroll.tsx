@@ -33,13 +33,22 @@ import {
   IconUser,
   IconWallet,
 } from "@tabler/icons-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function EmployeePayroll() {
   const theme = useMantineTheme();
   const [activeTab, setActiveTab] = useState<string | null>("payslips");
   const [selectedYear, setSelectedYear] = useState<string | null>("2025");
   const [isExpanded, setIsExpanded] = useState(false);
+  const [currentTime, setCurrentTime] = useState(new Date());
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentTime(new Date());
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   const payslips = [
     {
@@ -136,20 +145,33 @@ function EmployeePayroll() {
       >
         <div className="p-3 space-y-6 mb-3">
           <Group>
-            <div>
-              <Title order={1} className="text-2xl font-bold">
-                My Payroll
-              </Title>
-              <Text color="dimmed" className="mt-1">
-                Current Pay Period: March 1-31, 2025
-              </Text>
+            <div className="flex flex-wrap justify-between items-center w-full">
+              <div>
+                <h1 className="text-2xl font-bold">My Payroll</h1>
+                <Text color="dimmed" className="mt-1">
+                  Current Pay Period: March 1-31, 2025
+                </Text>
+              </div>
+              <div className="p-3 flex flex-col items-center space-y-2">
+                <div className="mb-1">
+                  <h1 className="flex justify-center">
+                    {currentTime.toLocaleDateString("en-US", {
+                      weekday: "long",
+                      year: "numeric",
+                      month: "long",
+                      day: "numeric",
+                    })}
+                    <span className="ml-2 font-bold">
+                      {currentTime.toLocaleTimeString()}
+                    </span>
+                  </h1>
+                </div>
+              </div>
             </div>
-            <Button variant="outline">
-              <IconFileDownload size={18} />
-              Export History
-            </Button>
           </Group>
+        </div>
 
+        <div className="p-3 space-y-6">
           <Grid gutter="xl">
             <Grid.Col span={4}>
               <Paper p="lg" shadow="sm" className="h-full">
@@ -191,25 +213,29 @@ function EmployeePayroll() {
                 </Group>
               </Paper>
             </Grid.Col>
-
-            <Paper p="lg" shadow="sm" className="h-full">
-              <Group>
-                <div>
-                  <Text color="dimmed" size="sm">
-                    Tax Paid YTD
-                  </Text>
-                  <Title order={2} className="mt-1">
-                    ₱27,100
-                  </Title>
-                  <Badge color="red" variant="light">
-                    -5% from last year
-                  </Badge>
-                </div>
-                <IconScale size={40} color={theme.colors.orange[6]} />
-              </Group>
-            </Paper>
+            
+            <Grid.Col span={4}>
+              <Paper p="lg" shadow="sm" className="h-full">
+                <Group>
+                  <div>
+                    <Text color="dimmed" size="sm">
+                      Tax Paid YTD
+                    </Text>
+                    <Title order={2} className="mt-1">
+                      ₱27,100
+                    </Title>
+                    <Badge color="red" variant="light">
+                      -5% from last year
+                    </Badge>
+                  </div>
+                  <IconScale size={40} color={theme.colors.orange[6]} />
+                </Group>
+              </Paper>
+            </Grid.Col>
           </Grid>
+        </div>
 
+        <div className="p-3 space-y-6">
           <Paper p="lg" shadow="sm">
             <Title order={3} className="mb-4">
               March 2025 Breakdown
