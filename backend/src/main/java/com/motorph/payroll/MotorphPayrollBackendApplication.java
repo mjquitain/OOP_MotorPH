@@ -1,13 +1,13 @@
-package com.example.motorph;
+package com.motorph.payroll;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class MotorphApplication {
+public class MotorphPayrollBackendApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(MotorphApplication.class, args);
+		SpringApplication.run(MotorphPayrollBackendApplication.class, args);
 	}
 
 }

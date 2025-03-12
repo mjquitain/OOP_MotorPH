@@ -1,10 +1,10 @@
-package com.example.motorph;
+package com.motorph.payroll;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class MotorphApplicationTests {
+class MotorphPayrollBackendApplicationTests {
 
 	@Test
 	void contextLoads() {
