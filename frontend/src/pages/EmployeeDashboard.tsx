@@ -107,170 +107,174 @@ function EmployeeDashboard() {
           isExpanded ? "ml-60" : "ml-20"
         }`}
       >
-        <div className="p-3 space-y-6 mb-3">
-          <Group>
-            <div className="flex flex-wrap justify-between items-center w-full">
-              <h1 className="text-2xl font-bold p-3">Welcome,</h1>
-              <div className="p-3 flex flex-col items-center space-y-2">
-                <div className="mb-1">
-                  <Text>
-                    {currentTime.toLocaleDateString("en-US", {
-                      weekday: "long",
-                      year: "numeric",
-                      month: "long",
-                      day: "numeric",
-                    })}
-                    <span className="ml-2 font-bold">
-                      {currentTime.toLocaleTimeString()}
-                    </span>
-                  </Text>
-                </div>
-                <div className="flex space-x-2">
-                  <Button color="teal" size="md" w={130} h={36}>
-                    Check In
-                  </Button>
-                  <Button
-                    variant="outline"
-                    color="red"
-                    size="md"
-                    w={130}
-                    h={36}
-                    className="left-1"
-                  >
-                    Check Out
-                  </Button>
+        <div className="p-3 max-w-6xl mx-auto">
+          <div className="p-3 space-y-6 mb-3">
+            <Group>
+              <div className="flex flex-wrap justify-between items-center w-full">
+                <h1 className="text-2xl font-bold p-3">Welcome,</h1>
+                <div className="p-3 flex flex-col items-center space-y-2">
+                  <div className="mb-1">
+                    <Text>
+                      {currentTime.toLocaleDateString("en-US", {
+                        weekday: "long",
+                        year: "numeric",
+                        month: "long",
+                        day: "numeric",
+                      })}
+                      <span className="ml-2 font-bold">
+                        {currentTime.toLocaleTimeString()}
+                      </span>
+                    </Text>
+                  </div>
+                  <div className="flex space-x-2">
+                    <Button color="teal" size="md" w={130} h={36}>
+                      Check In
+                    </Button>
+                    <Button
+                      variant="outline"
+                      color="red"
+                      size="md"
+                      w={130}
+                      h={36}
+                      className="left-1"
+                    >
+                      Check Out
+                    </Button>
+                  </div>
                 </div>
               </div>
-            </div>
-          </Group>
-        </div>
-
-        <div className="p-3 space-y-6">
-          <Grid gutter="xl">
-            <Grid.Col span={4}>
-              <Paper p="lg" shadow="sm" radius="md" className="h-full">
-                <Group>
-                  <div>
-                    <Text color="dimmed" size="sm">
-                      Attendance Summary
-                    </Text>
-                    <Title order={3} className="mt-1">
-                      12 / 14 Days
-                    </Title>
-                    <Progress
-                      value={85}
-                      color="green"
-                      size="sm"
-                      className="mt-3"
-                    />
-                  </div>
-                  <IconCalendar size={40} color={theme.colors.blue[6]} />
-                </Group>
-                <Group className="mt-4">
-                  <div>
-                    <Text size="sm">Present</Text>
-                    <Text>12 days</Text>
-                  </div>
-                  <div>
-                    <Text size="sm">Absent</Text>
-                    <Text>2 days</Text>
-                  </div>
-                </Group>
-              </Paper>
-            </Grid.Col>
-
-            <Grid.Col span={4}>
-              <Paper p="lg" shadow="sm" radius="md" className="h-full">
-                <Group>
-                  <div>
-                    <Text color="dimmed" size="sm">
-                      Leave Balance
-                    </Text>
-                    <Title order={3} className="mt-1">
-                      5 Days Remaining
-                    </Title>
-                  </div>
-                  <IconBeach size={40} color={theme.colors.orange[6]} />
-                </Group>
-                <Button fullWidth className="mt-6">
-                  Request Leave
-                </Button>
-              </Paper>
-            </Grid.Col>
-
-            <Grid.Col span={4}>
-              <Paper p="lg" shadow="sm" radius="md" className="h-full">
-                <Group>
-                  <div>
-                    <Text color="dimmed" size="sm">
-                      Next Payslip
-                    </Text>
-                    <Title order={3} className="mt-1">
-                      March 15, 2025
-                    </Title>
-                    <Text color="dimmed" size="sm" className="mt-1">
-                      PHP 45,000
-                    </Text>
-                  </div>
-                  <IconCoin size={40} color={theme.colors.green[6]} />
-                </Group>
-                <Button variant="outline" fullWidth className="mt-6">
-                  Download Previous
-                </Button>
-              </Paper>
-            </Grid.Col>
-          </Grid>
-        </div>
-
-        <div className="p-3 mt-3">
-          <Paper p="lg" shadow="sm" radius="md">
-            <Group className="mb-4">
-              <Title order={3}>Company Updates</Title>
-              <Badge variant="filled" color="blue">
-                3 New
-              </Badge>
             </Group>
+          </div>
 
-            <Tabs defaultValue="announcements">
-              <Tabs.List>
-                <Tabs.Tab value="announcements">Announcements</Tabs.Tab>
-                <Tabs.Tab value="policies">Policies</Tabs.Tab>
-              </Tabs.List>
+          <div className="p-3 space-y-6">
+            <Grid gutter="xl">
+              <Grid.Col span={4}>
+                <Paper p="lg" shadow="sm" radius="md" className="h-full">
+                  <Group>
+                    <div>
+                      <Text color="dimmed" size="sm">
+                        Attendance Summary
+                      </Text>
+                      <Title order={3} className="mt-1">
+                        12 / 14 Days
+                      </Title>
+                      <Progress
+                        value={85}
+                        color="green"
+                        size="sm"
+                        className="mt-3"
+                      />
+                    </div>
+                    <IconCalendar size={40} color={theme.colors.blue[6]} />
+                  </Group>
+                  <Group className="mt-4">
+                    <div>
+                      <Text size="sm">Present</Text>
+                      <Text>12 days</Text>
+                    </div>
+                    <div>
+                      <Text size="sm">Absent</Text>
+                      <Text>2 days</Text>
+                    </div>
+                  </Group>
+                </Paper>
+              </Grid.Col>
 
-              <Tabs.Panel value="announcements" pt="sm">
-                <Timeline bulletSize={24} lineWidth={2}>
-                  <Timeline.Item title="Payroll Processing">
-                    <Text size="sm">
-                      March 15th - Payroll will be processed
-                    </Text>
-                    <Text size="xs" color="dimmed">
-                      Posted 2 days ago
-                    </Text>
-                  </Timeline.Item>
+              <Grid.Col span={4}>
+                <Paper p="lg" shadow="sm" radius="md" className="h-full">
+                  <Group>
+                    <div>
+                      <Text color="dimmed" size="sm">
+                        Leave Balance
+                      </Text>
+                      <Title order={3} className="mt-1">
+                        5 Days Remaining
+                      </Title>
+                    </div>
+                    <IconBeach size={40} color={theme.colors.orange[6]} />
+                  </Group>
+                  <Button fullWidth className="mt-6">
+                    Request Leave
+                  </Button>
+                </Paper>
+              </Grid.Col>
 
-                  <Timeline.Item
-                    bullet={<IconCalendar size={12} />}
-                    title="Holiday Notice"
-                  >
-                    <Text size="sm">Office closed April 13 - April 20</Text>
-                    <Text size="xs" color="dimmed">
-                      Posted 1 week ago
-                    </Text>
-                  </Timeline.Item>
+              <Grid.Col span={4}>
+                <Paper p="lg" shadow="sm" radius="md" className="h-full">
+                  <Group>
+                    <div>
+                      <Text color="dimmed" size="sm">
+                        Next Payslip
+                      </Text>
+                      <Title order={3} className="mt-1">
+                        March 15, 2025
+                      </Title>
+                      <Text color="dimmed" size="sm" className="mt-1">
+                        PHP 45,000
+                      </Text>
+                    </div>
+                    <IconCoin size={40} color={theme.colors.green[6]} />
+                  </Group>
+                  <Button variant="outline" fullWidth className="mt-6">
+                    Download Previous
+                  </Button>
+                </Paper>
+              </Grid.Col>
+            </Grid>
+          </div>
 
-                  <Timeline.Item
-                    bullet={<IconCoin size={12} />}
-                    title="Training Opportunities"
-                  >
-                    <Text size="sm">New Marketing Basics course available</Text>
-                    <Text size="xs" color="dimmed">
-                      Posted 3 days ago
-                    </Text>
-                  </Timeline.Item>
-                </Timeline>
-              </Tabs.Panel>
-            </Tabs>
-          </Paper>
+          <div className="p-3 mt-3">
+            <Paper p="lg" shadow="sm" radius="md">
+              <Group className="mb-4">
+                <Title order={3}>Company Updates</Title>
+                <Badge variant="filled" color="blue">
+                  3 New
+                </Badge>
+              </Group>
+
+              <Tabs defaultValue="announcements">
+                <Tabs.List>
+                  <Tabs.Tab value="announcements">Announcements</Tabs.Tab>
+                  <Tabs.Tab value="policies">Policies</Tabs.Tab>
+                </Tabs.List>
+
+                <Tabs.Panel value="announcements" pt="sm">
+                  <Timeline bulletSize={24} lineWidth={2}>
+                    <Timeline.Item title="Payroll Processing">
+                      <Text size="sm">
+                        March 15th - Payroll will be processed
+                      </Text>
+                      <Text size="xs" color="dimmed">
+                        Posted 2 days ago
+                      </Text>
+                    </Timeline.Item>
+
+                    <Timeline.Item
+                      bullet={<IconCalendar size={12} />}
+                      title="Holiday Notice"
+                    >
+                      <Text size="sm">Office closed April 13 - April 20</Text>
+                      <Text size="xs" color="dimmed">
+                        Posted 1 week ago
+                      </Text>
+                    </Timeline.Item>
+
+                    <Timeline.Item
+                      bullet={<IconCoin size={12} />}
+                      title="Training Opportunities"
+                    >
+                      <Text size="sm">
+                        New Marketing Basics course available
+                      </Text>
+                      <Text size="xs" color="dimmed">
+                        Posted 3 days ago
+                      </Text>
+                    </Timeline.Item>
+                  </Timeline>
+                </Tabs.Panel>
+              </Tabs>
+            </Paper>
+          </div>
         </div>
       </main>
     </Container>
